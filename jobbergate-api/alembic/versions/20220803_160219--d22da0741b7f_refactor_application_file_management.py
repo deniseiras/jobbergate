@@ -33,10 +33,10 @@ def downgrade():
             "application_file",
             sa.VARCHAR(),
             autoincrement=False,
-            nullable=False,
+            nullable=True,
         ),
     )
-    op.alter_column("applications", "application_config", existing_nullable=True, nullable=False)
+    op.alter_column("applications", "application_config", existing_nullable=True, nullable=True)
     # Set updated status to false everywhere
     op.execute("UPDATE applications SET application_uploaded=false")
     # ### end Alembic commands ###
